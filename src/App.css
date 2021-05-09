@@ -1,0 +1,19 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  align-items: center;
+  background-image: linear-gradient();
+  background-color: rgb(73, 201, 240);
+}
+
+h5 {
+  margin: 15px 0;
+  font-weight: 400;
+  color:rgb(108, 114, 116);
+  text-align: right;
+  background-image: linear-gradient(to left,#9fddddb5, white);
+  padding: 5px;
+}
+
