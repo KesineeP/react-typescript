@@ -1,17 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, Dispatch, SetStateAction } from 'react'
+// import CSS from 'csstype';
+interface Props {
+    database: TodoType[];
+    setDatabase: Dispatch<SetStateAction<TodoType[]>>;
+    todo: any;
+};
 
-function Todo({ todo, database, setDatabase }) {
+export type TodoType = {
+    id: string;
+    data: string;
+    isChecked: boolean;
+}
+
+
+const Todo: React.FC<Props> = ({ todo, database, setDatabase }) => {
     const [isEdit, setIsEdit] = useState(false);
 
-    const handleDeleteTodo = (id) => {
+    const handleDeleteTodo = (id: string) => {
         //delete this todo that clicked
         //setDatabase will exclude this todo
-        const newDatabase = database.filter(todo => (todo.id !== id));
+        const newDatabase = database.filter((todo: TodoType) => (todo.id !== id));
         setDatabase(newDatabase);
         //{id: kfsfkls, data: make rice, isCheck: false} !== kfsfkls
 
     }
-
+    console.log(todo);
     // user click checkbox 
     // if checkbox is unchecked switch isChecked to false, textDecoration is none
     // if checkbox is checked switch isChecked to true and change textDecoration to 
@@ -43,7 +56,7 @@ function Todo({ todo, database, setDatabase }) {
         setIsEdit(true);
     }
 
-    const handleChangeTodoData = (event, id) => {
+    const handleChangeTodoData = (event: React.ChangeEvent<HTMLInputElement>, id: string) => {
         const newData = event.target.value;
         const copyDatabase = [...database];
         let newDatabase = [];
@@ -56,7 +69,7 @@ function Todo({ todo, database, setDatabase }) {
         console.log("newData1", newDatabase);
         setDatabase(newDatabase)
     }
-    const handlePressEnterKey = (event) => {
+    const handlePressEnterKey = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") setIsEdit(false)
     }
 

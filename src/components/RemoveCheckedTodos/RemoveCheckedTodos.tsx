@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
+import CSS from 'csstype';
 
-function RemoveCheckedTodos({ database, setDatabase }) {
+interface Props {
+    database: TodoType[];
+    setDatabase: Dispatch<SetStateAction<TodoType[]>>;
+}
+type TodoType = {
+    id: string;
+    data: string;
+    isChecked: boolean;
+}
+const RemoveCheckedTodos: React.FC<Props> = ({ database, setDatabase }) => {
     // user click "Remove Checked" button
     // check isChecked === true
     // remove todo that isChecked === true 
     const handleRemoveAllChecked = () => {
-        const filteredTodos = database.filter(todo => !todo.isChecked);
+        const filteredTodos = database.filter((todo: TodoType) => !todo.isChecked);
         setDatabase(filteredTodos);
     }
+    console.log(database);
     return (
         <div style={styles.container}>
             <button style={styles.button} onClick={() => handleRemoveAllChecked()}>
@@ -17,8 +28,13 @@ function RemoveCheckedTodos({ database, setDatabase }) {
         </div >
     )
 }
+type StyleType = {
+    container: CSS.Properties;
+    button: CSS.Properties;
+    p: CSS.Properties;
+}
 
-const styles = {
+const styles: StyleType = {
     container: {
         display: 'flex',
         justifyContent: 'flex-end'
