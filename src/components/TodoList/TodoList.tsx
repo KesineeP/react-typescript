@@ -1,15 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import AddToDo from '../AddToDo';
 import DisplayToDos from '../DisplayToDos';
 import RemoveCheckedTodos from '../RemoveCheckedTodos';
+import CSS from 'csstype';
+
+interface Props {
+    database: TodoType[];
+    setDatabase: Dispatch<SetStateAction<TodoType[]>>;
+}
+type TodoType = {
+    id: string;
+    data: string;
+    isChecked: boolean;
+}
 
 // click delete button
 // that todo will be removed from todo list(database)
-function TodoList() {
-    const [database, setDatabase] = useState([]);
+const TodoList: React.FC = () => {
+    const [database, setDatabase] = useState<Props['database']>([]);
 
     useEffect(() => {
-        const database = JSON.parse(localStorage.getItem('database'));
+        const database = JSON.parse(localStorage.getItem('database') || '[]');
         if (database) {
             setDatabase(database);
         }
@@ -33,8 +44,11 @@ function TodoList() {
         </div>
     )
 }
+type StyleType = {
+    container: CSS.Properties;
+}
 
-const styles = {
+const styles: StyleType = {
     container: {
         display: 'flex',
         flexDirection: 'column',
