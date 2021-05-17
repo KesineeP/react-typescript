@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import TodoList from './components/TodoList';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <h1 style={styles.h1}>TODO LIST</h1>
