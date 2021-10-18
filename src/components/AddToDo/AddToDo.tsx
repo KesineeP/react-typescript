@@ -18,7 +18,6 @@ const AddToDo: React.FC<Props> = ({ database, setDatabase }) => {
         event.persist()
         setNewTodo(event.target.value)
     }
-    //set input to emty/placeholder
 
     const addTodoToDatabase = (event: React.MouseEvent<HTMLButtonElement>, newTodo: string) => {
         event.preventDefault()
@@ -40,9 +39,17 @@ const AddToDo: React.FC<Props> = ({ database, setDatabase }) => {
                     onChange={(event) => savingNewTodo(event)}
                 />
                 <button
-                    style={styles.addButton}
+                    style={{
+                        backgroundColor: `${newTodo === '' ? 'lightgrey' : '#4e93bd'}`, color: 'white',
+                        border: 'none',
+                        fontSize: '13px',
+                        padding: '12px',
+                        marginLeft: '5px',
+                        cursor: 'pointer'
+                    }}
                     value='+'
                     onClick={(event) => addTodoToDatabase(event, newTodo)}
+                    disabled={newTodo === '' ? true : false}
                 >
                     <i className="fas fa-plus" />
                 </button>
@@ -66,15 +73,6 @@ const styles = {
         paddingLeft: '10px',
         border: 'solid 2px powderblue',
         outline: 'none'
-    },
-    addButton: {
-        color: 'white',
-        backgroundColor: '#4e93bd',
-        border: 'none',
-        fontSize: '13px',
-        padding: '12px',
-        marginLeft: '5px',
-        cursor: 'pointer'
     }
 }
 export default AddToDo;
