@@ -55,7 +55,6 @@ const styles: StyleType = {
         padding: ' 5px 20px 20px 20px',
         boxShadow: '2px 2px 5px grey',
         background: 'white',
-        fontSize: '',
         maxWidth: '450px',
 
     }

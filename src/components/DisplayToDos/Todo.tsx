@@ -121,12 +121,14 @@ const styles = {
     },
     button: {
         border: 'none',
-        color: 'lightgrey',
+        color: '#878e91',
+        backgroundColor: '#9fddddb5',
         borderRadius: '5px',
         fontSize: '20px',
         margin: '2px',
         padding: '5px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        width: '30px'
     },
     p: {
         paddingLeft: '10px',
